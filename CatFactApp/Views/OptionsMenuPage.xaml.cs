@@ -3,12 +3,14 @@ using Microsoft.Maui.Controls;
 using Microsoft.Maui.Controls.Shapes;
 using System.IO;
 using static System.Net.Mime.MediaTypeNames;
+using CatFactApp.Controllers;
+using CatFactApp.Services;
 
-namespace CatFactApp;
+namespace CatFactApp.Views;
 
 public partial class OptionsMenuPage : ContentPage
 {
-    ApiService service = new ApiService();
+    OptionsController controller = new OptionsController();
 
     public OptionsMenuPage()
 	{
@@ -61,8 +63,7 @@ public partial class OptionsMenuPage : ContentPage
 
     private void ButtonSmall_Clicked(object sender, EventArgs e)
     {
-        PreferencesService.HeaderSize = 18;
-        PreferencesService.BodySize = 12;
+        controller.SetSmallControl();
 
         
         OptionsHeader.FontSize = PreferencesService.HeaderSize;
@@ -79,10 +80,9 @@ public partial class OptionsMenuPage : ContentPage
 
     private void ButtonMedium_Clicked(object sender, EventArgs e)
     {
-        PreferencesService.HeaderSize = 22;
-        PreferencesService.BodySize = 14;
+        controller.SetMediumControl();
 
-        
+
         OptionsHeader.FontSize = PreferencesService.HeaderSize;
         ButtonSmall.FontSize = PreferencesService.BodySize;
         ButtonMedium.FontSize = PreferencesService.BodySize;
@@ -96,10 +96,9 @@ public partial class OptionsMenuPage : ContentPage
 
     private void ButtonLarge_Clicked(object sender, EventArgs e)
     {
-        PreferencesService.HeaderSize = 26;
-        PreferencesService.BodySize = 18;
+        controller.SetLargeControl();
 
-        
+
         OptionsHeader.FontSize = PreferencesService.HeaderSize;
         ButtonSmall.FontSize = PreferencesService.BodySize;
         ButtonMedium.FontSize = PreferencesService.BodySize;
@@ -118,36 +117,27 @@ public partial class OptionsMenuPage : ContentPage
     /// </summary>
     public async void ButtonExport_Clicked(object sender, EventArgs e)
     {
-        var facts = await App.DatabaseService.GetFactsAsync();
-        string targetFile = System.IO.Path.Combine(FileSystem.Current.AppDataDirectory, "SavedFacts.txt");
-
-        using FileStream outputStream = System.IO.File.OpenWrite(targetFile);
-        using StreamWriter streamWriter = new StreamWriter(outputStream);
-        foreach (var fact in facts)
-        {
-            await streamWriter.WriteLineAsync(fact.fact);
-        }
-
-
+        await controller.ExportFactsControl();
     }
 
     public async void ButtonTest_Clicked(object sender, EventArgs e)
     {
-        try
+        bool test = await controller.TestApiControl();
+
+        if (test == true)
         {
-            var fact = await service.GetFact();
-            await DisplayAlert("Success", "API Fetched Successfully", "Okay");
+            await DisplayAlert("Test","Api Test Successful", "Ok");
         }
-        catch (Exception)
+        else
         {
-            await DisplayAlert("Failed", "API Could Not Be fetched", "Okay");
+            await DisplayAlert("Test", "Api Test Failed", "Ok");
         }
+
     }
 
     private void ButtonReset_Clicked(object sender, EventArgs e)
     {
-        PreferencesService.HeaderSize = 22;
-        PreferencesService.BodySize = 14;
+        controller.ResetDefaultsControl();
 
 
         OptionsHeader.FontSize = PreferencesService.HeaderSize;

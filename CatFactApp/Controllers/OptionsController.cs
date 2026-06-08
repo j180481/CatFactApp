@@ -68,10 +68,5 @@ namespace CatFactApp.Controllers
             });
         }
 
-        public int GetCurrentSizeControl()
-        {
-            return PreferencesService.HeaderSize;
-        }
-
     }
 }
