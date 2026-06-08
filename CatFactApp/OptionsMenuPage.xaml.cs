@@ -26,6 +26,37 @@ public partial class OptionsMenuPage : ContentPage
         ButtonExport.FontSize = PreferencesService.BodySize;
         ButtonTest.FontSize = PreferencesService.BodySize;
         ButtonReset.FontSize = PreferencesService.BodySize;
+
+        SetButton();
+    }
+
+    private void SetButton()
+    {
+        ButtonSmall.BorderWidth = 0;
+        ButtonMedium.BorderWidth = 0;
+        ButtonLarge.BorderWidth = 0;
+        ButtonSmall.BorderColor = Colors.Transparent;
+        ButtonMedium.BorderColor = Colors.Transparent;
+        ButtonLarge.BorderColor = Colors.Transparent;
+
+        if (PreferencesService.HeaderSize == 18)
+        {
+            ButtonSmall.BorderWidth = 3;
+            ButtonSmall.BorderColor = Colors.Green;
+        }
+
+        else if (PreferencesService.HeaderSize == 22)
+        {
+            ButtonMedium.BorderWidth = 3;
+            ButtonMedium.BorderColor = Colors.Green;
+        }
+
+        else if (PreferencesService.HeaderSize == 26)
+        {
+            ButtonLarge.BorderWidth = 3;
+            ButtonLarge.BorderColor = Colors.Green;
+        }
+
     }
 
     private void ButtonSmall_Clicked(object sender, EventArgs e)
@@ -41,6 +72,9 @@ public partial class OptionsMenuPage : ContentPage
         ButtonExport.FontSize = PreferencesService.BodySize;
         ButtonTest.FontSize = PreferencesService.BodySize;
         ButtonReset.FontSize = PreferencesService.BodySize;
+
+        SetButton();
+
     }
 
     private void ButtonMedium_Clicked(object sender, EventArgs e)
@@ -56,6 +90,8 @@ public partial class OptionsMenuPage : ContentPage
         ButtonExport.FontSize = PreferencesService.BodySize;
         ButtonTest.FontSize = PreferencesService.BodySize;
         ButtonReset.FontSize = PreferencesService.BodySize;
+
+        SetButton();
     }
 
     private void ButtonLarge_Clicked(object sender, EventArgs e)
@@ -71,6 +107,9 @@ public partial class OptionsMenuPage : ContentPage
         ButtonExport.FontSize = PreferencesService.BodySize;
         ButtonTest.FontSize = PreferencesService.BodySize;
         ButtonReset.FontSize = PreferencesService.BodySize;
+
+        SetButton();
+
     }
 
     /// <summary>
@@ -118,5 +157,8 @@ public partial class OptionsMenuPage : ContentPage
         ButtonExport.FontSize = PreferencesService.BodySize;
         ButtonTest.FontSize = PreferencesService.BodySize;
         ButtonReset.FontSize = PreferencesService.BodySize;
+
+        SetButton();
+
     }
 }
