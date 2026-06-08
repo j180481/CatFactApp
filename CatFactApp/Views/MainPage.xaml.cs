@@ -55,6 +55,9 @@ public partial class MainPage : ContentPage
     private async void OnFactLabelHeld(object sender, EventArgs e)
     {
 
+        if (FactLabel.Text == "Meow!!!") return;
+
+        if (CatFactsHeader.Text == "Dog Time!!!!") return;
 
         await controller.SaveFactControl(FactLabel.Text);
         await DisplayAlert("Saved!", "Cat fact saved.", "Ok");
