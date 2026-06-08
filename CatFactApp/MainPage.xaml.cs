@@ -82,6 +82,9 @@ namespace CatFactApp
 
         private async void OnFactLabelHeld(object sender, EventArgs e)
         {
+            if (FactLabel.Text == "Meow!!!") return;
+
+            if (CatFactsHeader.Text == "Dog Time!!!!") return;
 
             var fact = new DisplayFact
             {

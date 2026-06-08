@@ -94,4 +94,25 @@ public partial class SavedFactsPage : ContentPage
         FactsCollectionView.ItemsSource = null;
         FactsCollectionView.ItemsSource = sorted;
     }
+
+
+    /// <summary>
+    /// Takes the swiped item, if it isnt null it casts it to a DisplayFact class object.
+    /// Then it calls the database service delete function to delete the item and then updates the collection view.
+    /// Primary Research Resource for code: https://www.youtube.com/watch?v=BHBYHC_9URc
+    /// </summary>
+    private async void OnDeleteSwipeInvoked(object sender, EventArgs e)
+    {
+
+        var swipedItem = sender as SwipeItem;
+
+        if (swipedItem is null) return;
+
+        var fact = swipedItem.BindingContext as DisplayFact;
+
+        await App.DatabaseService.DeleteFactAsync(fact);
+
+        await UpdateList();
+    }
+
 }

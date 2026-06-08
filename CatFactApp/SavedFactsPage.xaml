@@ -16,11 +16,21 @@
         <CollectionView x:Name="FactsCollectionView" Margin="0,10,0,0" SelectionMode="Multiple" >
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <StackLayout Padding="5">
-                        <Label Text="{Binding fact}" FontFamily="Serif" FontSize="{Binding FontSize}"/>
-                        <Label Text="{Binding time}" FontFamily="Serif" />
+                    <SwipeView>
+                        <SwipeView.LeftItems>
+                            <SwipeItems>
+                                <SwipeItem Text="Delete"
+                                               BackgroundColor="LightPink"
+                                               Invoked="OnDeleteSwipeInvoked"/>
+                            </SwipeItems>
+                        </SwipeView.LeftItems>
+                        <StackLayout Padding="5">
 
-                    </StackLayout>
+                            <Label Text="{Binding fact}" FontFamily="Serif" FontSize="{Binding FontSize}"/>
+                            <Label Text="{Binding time}" FontFamily="Serif" />
+
+                        </StackLayout>
+                    </SwipeView>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
