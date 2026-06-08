@@ -1,13 +1,19 @@
-namespace CatFactApp;
+using CatFactApp.Controllers;
+using CatFactApp.Models;
+using CatFactApp.Services;
+
+namespace CatFactApp.Views;
 
 public partial class SavedFactsPage : ContentPage
 {
+
+    SavedFactsController controller = new SavedFactsController();
 
     public SavedFactsPage()
 	{
         InitializeComponent();
 
-        UpdateList();
+        
     }
 
     protected override async void OnAppearing()
@@ -19,61 +25,10 @@ public partial class SavedFactsPage : ContentPage
         await UpdateList();
     }
 
-    private List<DisplayFact> AscendingBubbleSort(List<DisplayFact> facts)
-    {
-        var sorted = new List<DisplayFact>(facts);
-        DisplayFact temp;
-        bool swapped = false;
-
-        for (int i = 0; i < sorted.Count - 1; i++)
-        {
-            swapped = false;
-            for (int j = 0; j < sorted.Count - 1; j++)
-            {
-                if (sorted[j].time > sorted[j + 1].time)
-                {
-                    temp = sorted[j];
-                    sorted[j] = sorted[j + 1];
-                    sorted[j + 1] = temp;
-                    swapped = true;
-                }
-            }
-            if (!swapped) break;
-        }
-
-        return sorted;
-    }
-
-    private List<DisplayFact> DescendingBubbleSort(List<DisplayFact> facts)
-    {
-        var sorted = new List<DisplayFact>(facts);
-        DisplayFact temp;
-        bool swapped = false;
-
-        for (int i = 0; i < sorted.Count - 1; i++)
-        {
-            swapped = false;
-            for (int j = 0; j < sorted.Count - 1; j++)
-            {
-                if (sorted[j].time < sorted[j + 1].time)
-                {
-                    temp = sorted[j];
-                    sorted[j] = sorted[j + 1];
-                    sorted[j + 1] = temp;
-                    swapped = true;
-                }
-            }
-            if (!swapped) break;
-        }
-
-        return sorted;
-    }
 
     public async Task UpdateList()
 	{
-        var facts = await App.DatabaseService.GetFactsAsync();
-        foreach (var fact in facts)
-            fact.FontSize = PreferencesService.BodySize;
+        var facts = await controller.GetFactsControl();
         FactsCollectionView.ItemsSource = null;
         FactsCollectionView.ItemsSource = facts;
 
@@ -81,18 +36,16 @@ public partial class SavedFactsPage : ContentPage
 
     private async void ButtonAscending_Clicked(object sender, EventArgs e)
     {
-        var facts = await App.DatabaseService.GetFactsAsync();
-        var sorted = AscendingBubbleSort(facts);
+        var facts = await controller.GetAscendingControl();
         FactsCollectionView.ItemsSource = null;
-        FactsCollectionView.ItemsSource = sorted;
+        FactsCollectionView.ItemsSource = facts;
     }
 
     private async void ButtonDescending_Clicked(object sender, EventArgs e)
     {
-        var facts = await App.DatabaseService.GetFactsAsync();
-        var sorted = DescendingBubbleSort(facts);
+        var facts = await controller.GetDescendingControl();
         FactsCollectionView.ItemsSource = null;
-        FactsCollectionView.ItemsSource = sorted;
+        FactsCollectionView.ItemsSource = facts;
     }
 
 
@@ -110,7 +63,7 @@ public partial class SavedFactsPage : ContentPage
 
         var fact = swipedItem.BindingContext as DisplayFact;
 
-        await App.DatabaseService.DeleteFactAsync(fact);
+        await controller.DeleteFactControl(fact);
 
         await UpdateList();
     }
