@@ -1,0 +1,169 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CatFactApp.MainPage"
+             BackgroundColor="{AppThemeBinding Light=White, Dark=Black}">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Grid" x:Key="GridLayoutStyle">
+                <Setter Property="VisualStateManager.VisualStateGroups">
+                    <VisualStateGroupList>
+                        <VisualStateGroup>
+                            <VisualState x:Name="Portrait">
+                                <VisualState.StateTriggers>
+                                    <OrientationStateTrigger Orientation="Portrait" />
+                                </VisualState.StateTriggers>
+                                <VisualState.Setters>
+                                    <Setter Property="RowDefinitions" Value="Auto,Auto,*,Auto,Auto" />
+                                    <Setter Property="ColumnDefinitions" Value="*,*,*" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Landscape">
+                                <VisualState.StateTriggers>
+                                    <OrientationStateTrigger Orientation="Landscape" />
+                                </VisualState.StateTriggers>
+                                <VisualState.Setters>
+                                    <Setter Property="RowDefinitions" Value="*,*,*,Auto" />
+                                    <Setter Property="ColumnDefinitions" Value="*,*,*,*,*,*" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter>
+            </Style>
+
+            <Style TargetType="Image" x:Key="ImageStyle">
+                <Setter Property="VisualStateManager.VisualStateGroups">
+                    <VisualStateGroupList>
+                        <VisualStateGroup>
+                            <VisualState x:Name="Portrait">
+                                <VisualState.StateTriggers>
+                                    <OrientationStateTrigger Orientation="Portrait" />
+                                </VisualState.StateTriggers>
+                                <VisualState.Setters>
+                                    <Setter Property="Grid.Row" Value="0" />
+                                    <Setter Property="Grid.Column" Value="0" />
+                                    <Setter Property="Grid.ColumnSpan" Value="3" />
+                                    <Setter Property="Grid.RowSpan" Value="1" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Landscape">
+                                <VisualState.StateTriggers>
+                                    <OrientationStateTrigger Orientation="Landscape" />
+                                </VisualState.StateTriggers>
+                                <VisualState.Setters>
+                                    <Setter Property="Grid.Row" Value="0" />
+                                    <Setter Property="Grid.Column" Value="0" />
+                                    <Setter Property="Grid.ColumnSpan" Value="3" />
+                                    <Setter Property="Grid.RowSpan" Value="3" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter>
+            </Style>
+
+            <Style TargetType="StackLayout" x:Key="StackLayoutStyle">
+                <Setter Property="VisualStateManager.VisualStateGroups">
+                    <VisualStateGroupList>
+                        <VisualStateGroup>
+                            <VisualState x:Name="Portrait">
+                                <VisualState.StateTriggers>
+                                    <OrientationStateTrigger Orientation="Portrait" />
+                                </VisualState.StateTriggers>
+                                <VisualState.Setters>
+                                    <Setter Property="Grid.Row" Value="1" />
+                                    <Setter Property="Grid.Column" Value="0" />
+                                    <Setter Property="Grid.ColumnSpan" Value="3" />
+                                    <Setter Property="Grid.RowSpan" Value="4" />
+                                    <Setter Property="Orientation" Value="Vertical" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Landscape">
+                                <VisualState.StateTriggers>
+                                    <OrientationStateTrigger Orientation="Landscape" />
+                                </VisualState.StateTriggers>
+                                <VisualState.Setters>
+                                    <Setter Property="Grid.Row" Value="0" />
+                                    <Setter Property="Grid.Column" Value="3" />
+                                    <Setter Property="Grid.ColumnSpan" Value="3" />
+                                    <Setter Property="Grid.RowSpan" Value="4" />
+                                    <Setter Property="Orientation" Value="Vertical" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ScrollView>
+        <Grid Padding="30,0" RowSpacing="25" Style="{StaticResource GridLayoutStyle}">
+
+            <Image
+                x:Name="AnimalImage"
+                Source="cat.png"
+                HeightRequest="185"
+                Aspect="AspectFit"
+                SemanticProperties.Description="dot net bot in a hovercraft number nine"
+                Style="{StaticResource ImageStyle}"/>
+
+            <StackLayout Style="{StaticResource StackLayoutStyle}" Spacing="25">
+                <Label
+                    x:Name="CatFactsHeader"
+                    Text="Meow Facts!"
+                    TextColor="{AppThemeBinding Light=Black, Dark=White}"
+                    Style="{StaticResource Headline}"
+                    SemanticProperties.HeadingLevel="Level1" />
+                <Label
+                    x:Name="FactLabel"
+                    Text="Meow!!!"
+                    TextColor="{AppThemeBinding Light=Black, Dark=White}"
+                    Style="{StaticResource SubHeadline}"
+                    SemanticProperties.HeadingLevel="Level2"
+                    SemanticProperties.Description="Welcome to dot net Multi platform App U I">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnFactLabelHeld" NumberOfTapsRequired="2"/>
+                    </Label.GestureRecognizers>
+                </Label>
+                <Button
+                    x:Name="CounterBtn"
+                    Text="Get Fact"
+                    TextColor="{AppThemeBinding Light=White, Dark=White}"
+                    SemanticProperties.Hint="Counts the number of times you click"
+                    Clicked="OnCounterClicked"
+                    HorizontalOptions="Fill"
+                    BackgroundColor="{AppThemeBinding Light=SaddleBrown, Dark=Blue}" />
+                <Grid ColumnDefinitions="*,*,*">
+                    <Button
+                        Grid.Column="0"
+                        Margin="3"
+                        x:Name="AboutButton"
+                        Text="About Page"
+                        TextColor="{AppThemeBinding Light=White, Dark=White}"
+                        Clicked="OnAboutClicked"
+                        BackgroundColor="{AppThemeBinding Light=SaddleBrown, Dark=Blue}"/>
+                    <Button
+                        Grid.Column="1"
+                        Margin="3"
+                        x:Name="OptionsButton"
+                        Text="Options Page"
+                        TextColor="{AppThemeBinding Light=White, Dark=White}"
+                        BackgroundColor="{AppThemeBinding Light=SaddleBrown, Dark=Blue}"
+                        Clicked="OnOptionsClicked" />
+                    <Button
+                        Grid.Column="2"
+                        Margin="3"
+                        x:Name="SavedButton"
+                        Text="Saved Facts"
+                        TextColor="{AppThemeBinding Light=White, Dark=White}"
+                        Clicked="OnSavedFactsClicked"
+                        BackgroundColor="{AppThemeBinding Light=SaddleBrown, Dark=Blue}" />
+                </Grid>
+            </StackLayout>
+
+        </Grid>
+    </ScrollView>
+</ContentPage>

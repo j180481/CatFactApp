@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CatFactApp.OptionsMenuPage"
+             Title="OptionsMenuPage"
+             BackgroundColor="{AppThemeBinding Light=White, Dark=Black}">
+    
+    <VerticalStackLayout>
+        <Label
+            x:Name="OptionsHeader"
+            Text="Options Menu"
+            TextColor="{AppThemeBinding Light=Black, Dark=White}"
+            FontSize="23"
+            FontAttributes="Bold"
+            TextDecorations="Underline"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+        <Grid RowSpacing="30">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Button x:Name="ButtonSmall" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Text="Small Text" Margin="20" Clicked="ButtonSmall_Clicked" TextColor="{AppThemeBinding Light=White, Dark=White}" BackgroundColor="{AppThemeBinding Light=SaddleBrown, Dark=Blue}"/>
+            <Button x:Name="ButtonMedium" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Text="Medium Text" Margin="20" Clicked="ButtonMedium_Clicked" TextColor="{AppThemeBinding Light=White, Dark=White}" BackgroundColor="{AppThemeBinding Light=SaddleBrown, Dark=Blue}"/>
+            <Button x:Name="ButtonLarge" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Text="Large Text" Margin="20" Clicked="ButtonLarge_Clicked" TextColor="{AppThemeBinding Light=White, Dark=White}" BackgroundColor="{AppThemeBinding Light=SaddleBrown, Dark=Blue}"/>
+
+            <Button x:Name="ButtonExport" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" Text="Export Saved Facts" TextColor="{AppThemeBinding Light=White, Dark=White}" BackgroundColor="{AppThemeBinding Light=SaddleBrown, Dark=Blue}" Clicked="ButtonExport_Clicked"/>
+
+            <Button x:Name="ButtonTest" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" Text="Test API" TextColor="{AppThemeBinding Light=White, Dark=White}" BackgroundColor="{AppThemeBinding Light=SaddleBrown, Dark=Blue}" Clicked="ButtonTest_Clicked"/>
+
+            <Button x:Name="ButtonReset" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" Text="Reset to Default Settings" TextColor="{AppThemeBinding Light=White, Dark=White}" BackgroundColor="{AppThemeBinding Light=SaddleBrown, Dark=Blue}" Clicked="ButtonReset_Clicked"/>
+
+        </Grid>
+    </VerticalStackLayout>
+</ContentPage>

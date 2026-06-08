@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CatFactApp.AboutPage"
+             Title="AboutPage"
+             BackgroundColor="{AppThemeBinding Light=White, Dark=Black}">
+    <Grid ColumnSpacing="5" RowSpacing="5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+ 
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Label
+            Grid.Row="0"
+            Grid.Column="0"
+            Grid.ColumnSpan="3"
+            x:Name="AboutHeader"
+            Text="About Meow Facts"
+            TextColor="{AppThemeBinding Light=Black, Dark=White}"
+            TextDecorations="Underline"
+            FontAttributes="Bold"
+            FontSize="23"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center"
+            />
+        <Label
+            Grid.Row="1"
+            Grid.Column="0"
+            Grid.ColumnSpan="3"
+            x:Name="CatApiText"
+            Text="A simple api that returns a random fact about cats"
+            TextColor="{AppThemeBinding Light=Black, Dark=White}"
+            FontSize="15"
+            HorizontalOptions="Center"
+            
+            
+            />
+        <Label Grid.Row="2"
+                HorizontalOptions="Center"
+                Grid.Column="0"
+                Grid.ColumnSpan="3"
+                x:Name="CatApiLink"
+                Text="Click for Meowfacts API link"
+                FontSize="15"
+                TextColor="{AppThemeBinding Light=Blue, Dark=Blue}"
+                TextDecorations="Underline">
+            
+            
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="https://meowfacts.herokuapp.com/"/>
+            </Label.GestureRecognizers>
+        </Label>
+
+        <Label Grid.Row="4"
+               Grid.Column="0"
+               Grid.ColumnSpan="3"
+               x:Name="DogApiText"
+               Text="A Simple Api that returns a random dog picture"
+               TextColor="{AppThemeBinding Light=Black, Dark=White}"
+               FontSize="15"
+               HorizontalOptions="Center"/>
+
+        <Label 
+        HorizontalOptions="Center"
+        Grid.Row="5"
+        Grid.Column="0"
+        Grid.ColumnSpan="3"
+        x:Name="DogApiLink"
+        Text="Click for Dog API link"
+        FontSize="15"
+        TextColor="{AppThemeBinding Light=Blue, Dark=Blue}"
+        TextDecorations="Underline">
+
+
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="https://dog.ceo/api/breeds/image/random"/>
+            </Label.GestureRecognizers>
+        </Label>
+
+        <Label
+            Padding="25"
+            Margin="10"
+            Grid.Row="6"
+            Grid.RowSpan="4"
+            Grid.Column="0"
+            Grid.ColumnSpan="5"
+            x:Name="HelpText"
+            HorizontalOptions="Center"
+            HorizontalTextAlignment="Center"
+            VerticalTextAlignment="Center"
+            FontSize="18"
+            TextColor="{AppThemeBinding Light=Black, Dark=White}"
+            Text="Meow facts is a simple app which connects with two seperate APIs returning a cat fact or if you're (un)lucky: DOG TIME. An api returns the photo a random dog. Pressing Get fact on the main page will return either the text containing the fact or transform the main page to DOG TIME. Pressing and holding on the fact text will save it. You can view the list of your saved facts in the saved facts page. The options menu will allow you to change text size."
+            />
+
+
+    </Grid>
+</ContentPage>
