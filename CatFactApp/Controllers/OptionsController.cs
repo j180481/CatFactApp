@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using CatFactApp.Models;
 using CatFactApp.Services;
+using CommunityToolkit.Maui.Alerts;
+using CommunityToolkit.Maui.Storage;
 
 
 namespace CatFactApp.Controllers
@@ -51,21 +53,34 @@ namespace CatFactApp.Controllers
             }
         }
 
+        /// <summary>
+        /// 
+        /// Resource: https://learn.microsoft.com/en-us/dotnet/communitytoolkit/maui/essentials/file-saver?tabs=android
+        /// </summary>
         public async Task ExportFactsControl()
         {
             var facts = await App.DatabaseService.GetFactsAsync();
-            string targetFile = System.IO.Path.Combine(FileSystem.Current.AppDataDirectory, "SavedFacts.txt");
 
-            using (FileStream outputStream = System.IO.File.OpenWrite(targetFile))
+            string file = "";
+            foreach (var fact in facts)
             {
-                using (StreamWriter streamWriter = new StreamWriter(outputStream))
-                {
-                    foreach (var fact in facts)
-                    {
-                        await streamWriter.WriteLineAsync(fact.fact);
-                    }
-                }
+                file += fact.fact + "\n";
             }
+
+            using var stream = new MemoryStream(Encoding.Default.GetBytes(file));
+
+            var result = await FileSaver.Default.SaveAsync("SavedFacts.txt", stream, CancellationToken.None);
+            if (result.IsSuccessful)
+            {
+                await Toast.Make("File Saved").Show(CancellationToken.None);
+            }
+            else
+            {
+                await Toast.Make("File Failed to save").Show(CancellationToken.None);
+            }
+
+
+
         }
 
     }

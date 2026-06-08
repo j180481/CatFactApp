@@ -10,7 +10,7 @@ namespace CatFactApp.Controllers
 {
     public class MainController
     {
-        ApiService _apiService = new ApiService();
+        ApiService apiService = new ApiService();
         int count = 0;
         int dogCount = 10;
 
@@ -19,12 +19,12 @@ namespace CatFactApp.Controllers
             count++;
             if (count == dogCount)
             {
-                string dogUrl = await _apiService.GetDogURL();
+                string dogUrl = await apiService.GetDogURL();
                 count = 0;
                 return ("Dog Time!!!!", "Ruff ruff ruff ruff ruff ruff ruff... woof", dogUrl);
             }
 
-            CatFact fact = await _apiService.GetFact();
+            CatFact fact = await apiService.GetFact();
             return ("Meow Facts!", fact.data[0], "cat.png");
         }
 

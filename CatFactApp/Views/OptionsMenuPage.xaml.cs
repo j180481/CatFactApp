@@ -115,12 +115,12 @@ public partial class OptionsMenuPage : ContentPage
     /// Exports the saved facts to a text file.
     /// Resource referenced for writing inside the emulator: https://learn.microsoft.com/en-us/answers/questions/991205/how-to-write-a-text-file-in-maui
     /// </summary>
-    public async void ButtonExport_Clicked(object sender, EventArgs e)
+    private async void ButtonExport_Clicked(object sender, EventArgs e)
     {
         await controller.ExportFactsControl();
     }
 
-    public async void ButtonTest_Clicked(object sender, EventArgs e)
+    private async void ButtonTest_Clicked(object sender, EventArgs e)
     {
         bool test = await controller.TestApiControl();
 
