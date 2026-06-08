@@ -1,102 +1,66 @@
 ﻿using System.Threading.Tasks;
+using CatFactApp.Controllers;
+using CatFactApp.Models;
+namespace CatFactApp.Views;
 
-namespace CatFactApp
+public partial class MainPage : ContentPage
 {
-    public partial class MainPage : ContentPage
+
+    MainController controller = new MainController();
+
+    public MainPage()
+    {
+        InitializeComponent();
+    }
+
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+        CatFactsHeader.FontSize = Services.PreferencesService.HeaderSize;
+        FactLabel.FontSize = Services.PreferencesService.BodySize;
+        CounterBtn.FontSize = Services.PreferencesService.BodySize;
+        AboutButton.FontSize = Services.PreferencesService.BodySize;
+        OptionsButton.FontSize = Services.PreferencesService.BodySize;
+        SavedButton.FontSize = Services.PreferencesService.BodySize;
+    }
+
+    private async void OnCounterClicked(object sender, EventArgs e)
     {
 
-        int count = 0;
+        
+        var (headerText, factText, imageSource) = await controller.GetFactControl();
+        CatFactsHeader.Text = headerText;
+        FactLabel.Text = factText;
+        AnimalImage.Source = imageSource;
+        
 
-        int dogCount = 10;
-
-        bool dogTime = false;
-
-        public MainPage()
-        {
-            InitializeComponent();
-        }
-
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-            CatFactsHeader.FontSize = PreferencesService.HeaderSize;
-            FactLabel.FontSize = PreferencesService.BodySize;
-            CounterBtn.FontSize = PreferencesService.BodySize;
-            AboutButton.FontSize = PreferencesService.BodySize;
-            OptionsButton.FontSize = PreferencesService.BodySize;
-            SavedButton.FontSize = PreferencesService.BodySize;
-        }
-
-        private async void OnCounterClicked(object sender, EventArgs e)
-        {
-
-            ApiService service = new ApiService();
-
-            count++;
-
-            if (count == dogCount)
-            {
-                string url = await service.GetDogURL();
-
-                AnimalImage.Source = url;
-
-                CatFactsHeader.Text = "Dog Time!!!!";
-
-                FactLabel.Text = "Ruff ruff ruff ruff ruff ruff ruff... woof";
-
-                count = 0;
-
-                return;
-
-            }
-
-            CatFactsHeader.Text = "Meow Facts!";
-
-            AnimalImage.Source = "cat.png";
-
-            CatFact fact = await service.GetFact();
-
-
-            FactLabel.Text = fact.data[0];
-
-            
-
-
-            SemanticScreenReader.Announce(FactLabel.Text);
-        }
-
-        private async void OnAboutClicked(object sender, EventArgs e)
-        {
-            await Shell.Current.GoToAsync("AboutPage");
-        }
-
-        private async void OnOptionsClicked(object sender, EventArgs e)
-        {
-            await Shell.Current.GoToAsync("OptionsMenuPage");
-        }
-
-        private async void OnSavedFactsClicked(object sender, EventArgs e)
-        {
-            await Shell.Current.GoToAsync("SavedFactsPage");
-        }
-
-        private async void OnFactLabelHeld(object sender, EventArgs e)
-        {
-            
-
-            var fact = new DisplayFact
-            {
-                fact = FactLabel.Text,
-                time = DateTime.Now
-            };
-
-            await App.DatabaseService.SaveFactAsync(fact);
-
-            await DisplayAlert("Saved!", "Cat fact saved.", "Ok");
-
-        }
 
     }
 
-    
+    private async void OnAboutClicked(object sender, EventArgs e)
+    {
+        await controller.GoToAboutControl();
+    }
+
+    private async void OnOptionsClicked(object sender, EventArgs e)
+    {
+        await controller.GoToOptionsControl(); ;
+    }
+
+    private async void OnSavedFactsClicked(object sender, EventArgs e)
+    {
+        await controller.GoToSavedFactsControl();
+    }
+
+    private async void OnFactLabelHeld(object sender, EventArgs e)
+    {
+
+
+        await controller.SaveFactControl(FactLabel.Text);
+        await DisplayAlert("Saved!", "Cat fact saved.", "Ok");
+
+    }
+
 }
+
+

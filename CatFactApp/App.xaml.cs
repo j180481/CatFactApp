@@ -1,4 +1,8 @@
-﻿namespace CatFactApp
+﻿using CatFactApp.Models;
+using CatFactApp.Views;
+using CatFactApp.Services;
+
+namespace CatFactApp
 {
     public partial class App : Application
     {
@@ -6,9 +10,9 @@
         {
             InitializeComponent();
 
-            Routing.RegisterRoute("AboutPage", typeof(AboutPage));
-            Routing.RegisterRoute("OptionsMenuPage", typeof(OptionsMenuPage));
-            Routing.RegisterRoute("SavedFactsPage", typeof(SavedFactsPage));
+            Routing.RegisterRoute("AboutPage", typeof(Views.AboutPage));
+            Routing.RegisterRoute("OptionsMenuPage", typeof(Views.OptionsMenuPage));
+            Routing.RegisterRoute("SavedFactsPage", typeof(Views.SavedFactsPage));
         }
 
         private static SQLService _databaseService = default!;
