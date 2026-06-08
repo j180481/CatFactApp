@@ -19,14 +19,31 @@ namespace CatFactApp.Controllers
             count++;
             if (count == dogCount)
             {
-                string dogUrl = await apiService.GetDogURL();
-                count = 0;
-                return ("Dog Time!!!!", "Ruff ruff ruff ruff ruff ruff ruff... woof", dogUrl);
-            }
+                try
+                {
+                    string dogUrl = await apiService.GetDogURL();
+                    count = 0;
+                    return ("Dog Time!!!!", "Ruff ruff ruff ruff ruff ruff ruff... woof", dogUrl);
+                }
+                catch
+                {
+                    count = 0;
 
-            CatFact fact = await apiService.GetFact();
-            return ("Meow Facts!", fact.data[0], "cat.png");
-        }
+                    return ("Null", "null", "null");
+                }
+            }
+            try
+            {
+                CatFact fact = await apiService.GetFact();
+                return ("Meow Facts!", fact.data[0], "cat.png");
+            }
+            catch
+            {
+                count -= 1;
+
+                return ("Null", "null", "null");
+            }
+        } 
 
         public async Task SaveFactControl(string factText)
         {

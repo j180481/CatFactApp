@@ -29,9 +29,17 @@ public partial class MainPage : ContentPage
 
         
         var (headerText, factText, imageSource) = await controller.GetFactControl();
-        CatFactsHeader.Text = headerText;
-        FactLabel.Text = factText;
-        AnimalImage.Source = imageSource;
+        if (headerText == "Null")
+        {
+            await DisplayAlert("Error", "Potential Connection error.", "Ok");
+            return;
+        }
+        else
+        {
+            CatFactsHeader.Text = headerText;
+            FactLabel.Text = factText;
+            AnimalImage.Source = imageSource;
+        }
         
 
 
