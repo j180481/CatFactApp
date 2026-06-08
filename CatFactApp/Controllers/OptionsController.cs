@@ -56,16 +56,16 @@ namespace CatFactApp.Controllers
             var facts = await App.DatabaseService.GetFactsAsync();
             string targetFile = System.IO.Path.Combine(FileSystem.Current.AppDataDirectory, "SavedFacts.txt");
 
-            using FileStream outputStream = System.IO.File.OpenWrite(targetFile);
-            using StreamWriter streamWriter = new StreamWriter(outputStream);
-            foreach (var fact in facts)
-                await streamWriter.WriteLineAsync(fact.fact);
-
-            await Share.Default.RequestAsync(new ShareFileRequest
+            using (FileStream outputStream = System.IO.File.OpenWrite(targetFile))
             {
-                Title = "Export Saved Facts",
-                File = new ShareFile(targetFile)
-            });
+                using (StreamWriter streamWriter = new StreamWriter(outputStream))
+                {
+                    foreach (var fact in facts)
+                    {
+                        await streamWriter.WriteLineAsync(fact.fact);
+                    }
+                }
+            }
         }
 
     }
