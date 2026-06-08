@@ -1,15 +1,17 @@
-namespace CatFactApp;
+using CatFactApp.Controllers;
+using CatFactApp.Services;
+namespace CatFactApp.Views;
 using System.Windows.Input;
 
 public partial class AboutPage : ContentPage
 {
 
-    public ICommand TapCommand => new Command<string>(async (url) => await Launcher.OpenAsync(url));
+    AboutController controller = new AboutController();
 
     public AboutPage()
 	{
 		InitializeComponent();
-		BindingContext = this;
+		BindingContext = controller;
 	}
 
     protected override void OnAppearing()
