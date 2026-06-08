@@ -6,12 +6,12 @@ using System.Windows.Input;
 public partial class AboutPage : ContentPage
 {
 
-    AboutController controller = new AboutController();
+    public ICommand TapCommand => new Command<string>(async (url) => await Launcher.OpenAsync(url));
 
     public AboutPage()
 	{
 		InitializeComponent();
-		BindingContext = controller;
+		BindingContext = this;
 	}
 
     protected override void OnAppearing()
