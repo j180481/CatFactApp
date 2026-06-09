@@ -18,6 +18,10 @@ public partial class OptionsMenuPage : ContentPage
 
     }
 
+    /// <summary>
+    /// Saving the font size as a preference, it is applied to every page on appearing.
+    /// Resource utilized: https://en.ittrip.xyz/c-sharp/maui-font-size-by-resolution
+    /// </summary>
     protected override void OnAppearing()
     {
         base.OnAppearing();
@@ -63,6 +67,8 @@ public partial class OptionsMenuPage : ContentPage
 
     private void ButtonSmall_Clicked(object sender, EventArgs e)
     {
+        ButtonSmall.IsEnabled = false;
+
         controller.SetSmallControl();
 
         
@@ -76,10 +82,15 @@ public partial class OptionsMenuPage : ContentPage
 
         SetButton();
 
+        ButtonSmall.IsEnabled = true;
+
     }
 
     private void ButtonMedium_Clicked(object sender, EventArgs e)
     {
+
+        ButtonMedium.IsEnabled = false;
+
         controller.SetMediumControl();
 
 
@@ -92,10 +103,15 @@ public partial class OptionsMenuPage : ContentPage
         ButtonReset.FontSize = PreferencesService.BodySize;
 
         SetButton();
+
+        ButtonMedium.IsEnabled = true;
+
     }
 
     private void ButtonLarge_Clicked(object sender, EventArgs e)
     {
+        ButtonLarge.IsEnabled = false;
+
         controller.SetLargeControl();
 
 
@@ -109,6 +125,8 @@ public partial class OptionsMenuPage : ContentPage
 
         SetButton();
 
+        ButtonLarge.IsEnabled = true;
+
     }
 
     /// <summary>
@@ -117,11 +135,18 @@ public partial class OptionsMenuPage : ContentPage
     /// </summary>
     private async void ButtonExport_Clicked(object sender, EventArgs e)
     {
+        ButtonExport.IsEnabled = false;
+
         await controller.ExportFactsControl();
+
+        ButtonExport.IsEnabled = true;
     }
 
     private async void ButtonTest_Clicked(object sender, EventArgs e)
     {
+
+        ButtonTest.IsEnabled = false;
+
         bool test = await controller.TestApiControl();
 
         if (test == true)
@@ -133,10 +158,14 @@ public partial class OptionsMenuPage : ContentPage
             await DisplayAlert("Test", "Api Test Failed", "Ok");
         }
 
+        ButtonTest.IsEnabled = true;
     }
 
     private void ButtonReset_Clicked(object sender, EventArgs e)
     {
+
+        ButtonReset.IsEnabled = false;
+
         controller.ResetDefaultsControl();
 
 
@@ -150,5 +179,6 @@ public partial class OptionsMenuPage : ContentPage
 
         SetButton();
 
+        ButtonReset.IsEnabled = true;
     }
 }
