@@ -53,14 +53,22 @@ namespace CatFactApp.Services
         {
             var allFacts = await GetFactsAsync();
 
+            //Here we are checking if the fact we are trying to save already exists
             foreach (var savedFact in  allFacts)
             {
+                //if it does already exist in our database
+                //return 0 to the view
                 if (savedFact.fact == fact.fact)
                     return 0;
             }
 
             if (allFacts.Count >= 10)
             {
+
+                //If the count of saved facts is 10 or greater
+                //bubble sort the list ascending
+                //get the oldest fact
+                //then pass it to be deleted
                 var sorted = AscendingBubbleSort(allFacts);
                 var oldest = sorted[0];
                 await database.DeleteAsync(oldest);
