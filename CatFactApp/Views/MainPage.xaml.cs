@@ -26,7 +26,7 @@ public partial class MainPage : ContentPage
 
     private async void OnCounterClicked(object sender, EventArgs e)
     {
-
+        CounterBtn.IsEnabled = false;
         
         var (headerText, factText, imageSource) = await controller.GetFactControl();
         if (headerText == "Null")
@@ -40,28 +40,41 @@ public partial class MainPage : ContentPage
             FactLabel.Text = factText;
             AnimalImage.Source = imageSource;
         }
-        
 
+        CounterBtn.IsEnabled = true;
 
     }
 
     private async void OnAboutClicked(object sender, EventArgs e)
     {
+        AboutButton.IsEnabled = false;
+
         await controller.GoToAboutControl();
+
+        AboutButton.IsEnabled = true;
     }
 
     private async void OnOptionsClicked(object sender, EventArgs e)
     {
-        await controller.GoToOptionsControl(); ;
+        OptionsButton.IsEnabled = false;
+
+        await controller.GoToOptionsControl();
+
+        OptionsButton.IsEnabled = true;
     }
 
     private async void OnSavedFactsClicked(object sender, EventArgs e)
     {
+        SavedButton.IsEnabled = false;
+
         await controller.GoToSavedFactsControl();
+
+        SavedButton.IsEnabled = true;
     }
 
     private async void OnFactLabelHeld(object sender, EventArgs e)
     {
+
 
         if (FactLabel.Text == "Meow!!!") return;
 
@@ -77,7 +90,6 @@ public partial class MainPage : ContentPage
         {
             await DisplayAlert("Saved!", "Cat fact saved.", "Ok");
         }
-
     }
 
 }
