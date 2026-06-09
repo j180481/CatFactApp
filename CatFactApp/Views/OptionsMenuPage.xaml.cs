@@ -141,9 +141,13 @@ public partial class OptionsMenuPage : ContentPage
     {
         ButtonExport.IsEnabled = false;
 
-        bool response =  await controller.ExportFactsControl();
+        int response =  await controller.ExportFactsControl();
 
-        if (response == true)
+        if (response == 0)
+        {
+            await DisplayAlert("Export Canceled", "Cannot export an empty save file", "ok");
+        }
+        else if (response == 1)
         {
             await DisplayAlert("Export", "Success", "Ok");
         }

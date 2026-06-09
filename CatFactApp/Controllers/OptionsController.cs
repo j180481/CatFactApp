@@ -68,13 +68,19 @@ namespace CatFactApp.Controllers
         }
 
         /// <summary>
-        /// 
+        /// Uses FileSaver. Allows user to choose where they save a file.
         /// Resource: https://learn.microsoft.com/en-us/dotnet/communitytoolkit/maui/essentials/file-saver?tabs=android
         /// </summary>
-        public async Task<bool> ExportFactsControl()
+        public async Task<int> ExportFactsControl()
         {
             //retrieve facts from database
             var facts = await App.DatabaseService.GetFactsAsync();
+
+            //if the saved list is empty return without exporting
+            if (facts.Count == 0)
+            {
+                return 0;
+            }
 
             //build a string of all the facts with newlines between
             string file = "";
@@ -88,8 +94,15 @@ namespace CatFactApp.Controllers
             using var stream = new MemoryStream(Encoding.Default.GetBytes(file));
             var result = await FileSaver.Default.SaveAsync("SavedFacts.txt", stream, CancellationToken.None);
 
-            //return boolean if save successful
-            return result.IsSuccessful;
+            //return 1 if successful or -1 if failed
+            if (result.IsSuccessful)
+            {
+                return 1;
+            }
+            else
+            {
+                return -1;
+            }
 
 
 
