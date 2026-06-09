@@ -67,8 +67,16 @@ public partial class MainPage : ContentPage
 
         if (CatFactsHeader.Text == "Dog Time!!!!") return;
 
-        await controller.SaveFactControl(FactLabel.Text);
-        await DisplayAlert("Saved!", "Cat fact saved.", "Ok");
+        int result = await controller.SaveFactControl(FactLabel.Text);
+
+        if (result == 0)
+        {
+            await DisplayAlert("Not Saved.", "Cat fact already saved", "Ok");
+        }
+        else
+        {
+            await DisplayAlert("Saved!", "Cat fact saved.", "Ok");
+        }
 
     }
 

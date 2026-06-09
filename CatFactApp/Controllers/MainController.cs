@@ -45,14 +45,17 @@ namespace CatFactApp.Controllers
             }
         } 
 
-        public async Task SaveFactControl(string factText)
+        public async Task<int> SaveFactControl(string factText)
         {
             var fact = new DisplayFact
             {
                 fact = factText,
                 time = DateTime.Now
             };
-            await App.DatabaseService.SaveFactAsync(fact);
+
+            int response = await App.DatabaseService.SaveFactAsync(fact);
+
+            return response;
         }
 
         public async Task GoToAboutControl()

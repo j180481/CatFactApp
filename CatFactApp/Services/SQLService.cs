@@ -53,6 +53,12 @@ namespace CatFactApp.Services
         {
             var allFacts = await GetFactsAsync();
 
+            foreach (var savedFact in  allFacts)
+            {
+                if (savedFact.fact == fact.fact)
+                    return 0;
+            }
+
             if (allFacts.Count >= 10)
             {
                 var sorted = AscendingBubbleSort(allFacts);
