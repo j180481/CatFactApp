@@ -32,6 +32,7 @@ public partial class MainPage : ContentPage
         if (headerText == "Null")
         {
             await DisplayAlert("Error", "Potential Connection error.", "Ok");
+            CounterBtn.IsEnabled = true;
             return;
         }
         else
