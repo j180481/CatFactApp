@@ -23,6 +23,7 @@ public partial class MainPage : ContentPage
         OptionsButton.FontSize = Services.PreferencesService.BodySize;
         SavedButton.FontSize = Services.PreferencesService.BodySize;
 
+        //every time the page appears we reset the navigation buttons to true
         AboutButton.IsEnabled = true;
         OptionsButton.IsEnabled = true;
         SavedButton.IsEnabled = true;
@@ -30,9 +31,13 @@ public partial class MainPage : ContentPage
 
     private async void OnCounterClicked(object sender, EventArgs e)
     {
+        //When a navigation button is pressed, we set IsEnabled to false so user cant open multiple instances of the same page
         CounterBtn.IsEnabled = false;
         
         var response = await controller.GetFactControl();
+
+        //We check the returned tuple to see if it contains the string "null"
+        //If it does we display error message to the user
         if (response.headerText == "Null")
         {
             await DisplayAlert("Error", "Potential Connection error.", "Ok");
@@ -80,9 +85,12 @@ public partial class MainPage : ContentPage
     private async void OnFactLabelHeld(object sender, EventArgs e)
     {
 
-
+        //pass the factLabel.txt and CatFactsHeader.txt into the controller
+        //This is so we can validate the factLabel.text is valid
         int result = await controller.SaveFactControl(FactLabel.Text, CatFactsHeader.Text);
 
+        //if it is either the default text (meow) or the header indicates dog time
+        //we simply return, do not allow the user to do anything with it
         if (result == -1)
         {
             return;
