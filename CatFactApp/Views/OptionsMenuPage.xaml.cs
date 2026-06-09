@@ -25,13 +25,13 @@ public partial class OptionsMenuPage : ContentPage
     protected override void OnAppearing()
     {
         base.OnAppearing();
-        OptionsHeader.FontSize = PreferencesService.HeaderSize;
-        ButtonSmall.FontSize = PreferencesService.BodySize;
-        ButtonMedium.FontSize = PreferencesService.BodySize;
-        ButtonLarge.FontSize = PreferencesService.BodySize;
-        ButtonExport.FontSize = PreferencesService.BodySize;
-        ButtonTest.FontSize = PreferencesService.BodySize;
-        ButtonReset.FontSize = PreferencesService.BodySize;
+        OptionsHeader.FontSize = controller.GetHeaderSize();
+        ButtonSmall.FontSize = controller.GetBodySize();
+        ButtonMedium.FontSize = controller.GetBodySize();
+        ButtonLarge.FontSize = controller.GetBodySize();
+        ButtonExport.FontSize = controller.GetBodySize();
+        ButtonTest.FontSize = controller.GetBodySize();
+        ButtonReset.FontSize = controller.GetBodySize();
 
         SetButton();
     }
@@ -46,7 +46,7 @@ public partial class OptionsMenuPage : ContentPage
         ButtonLarge.BorderColor = Colors.Transparent;
 
         //retrieve the current header font size as an int from the saved preference
-        int currentHeader = controller.RetrieveHeaderSizePreference();
+        int currentHeader = controller.GetHeaderSize();
 
         //Then check it to determine which button is set as active visually in the UI
         if (currentHeader == 18)
@@ -76,13 +76,13 @@ public partial class OptionsMenuPage : ContentPage
         controller.SetSmallControl();
 
         
-        OptionsHeader.FontSize = PreferencesService.HeaderSize;
-        ButtonSmall.FontSize = PreferencesService.BodySize;
-        ButtonMedium.FontSize = PreferencesService.BodySize;
-        ButtonLarge.FontSize = PreferencesService.BodySize;
-        ButtonExport.FontSize = PreferencesService.BodySize;
-        ButtonTest.FontSize = PreferencesService.BodySize;
-        ButtonReset.FontSize = PreferencesService.BodySize;
+        OptionsHeader.FontSize = controller.GetHeaderSize();
+        ButtonSmall.FontSize = controller.GetBodySize();
+        ButtonMedium.FontSize = controller.GetBodySize();
+        ButtonLarge.FontSize = controller.GetBodySize();
+        ButtonExport.FontSize = controller.GetBodySize();
+        ButtonTest.FontSize = controller.GetBodySize();
+        ButtonReset.FontSize = controller.GetBodySize();
 
         SetButton();
 
@@ -98,13 +98,13 @@ public partial class OptionsMenuPage : ContentPage
         controller.SetMediumControl();
 
 
-        OptionsHeader.FontSize = PreferencesService.HeaderSize;
-        ButtonSmall.FontSize = PreferencesService.BodySize;
-        ButtonMedium.FontSize = PreferencesService.BodySize;
-        ButtonLarge.FontSize = PreferencesService.BodySize;
-        ButtonExport.FontSize = PreferencesService.BodySize;
-        ButtonTest.FontSize = PreferencesService.BodySize;
-        ButtonReset.FontSize = PreferencesService.BodySize;
+        OptionsHeader.FontSize = controller.GetHeaderSize();
+        ButtonSmall.FontSize = controller.GetBodySize();
+        ButtonMedium.FontSize = controller.GetBodySize();
+        ButtonLarge.FontSize = controller.GetBodySize();
+        ButtonExport.FontSize = controller.GetBodySize();
+        ButtonTest.FontSize = controller.GetBodySize();
+        ButtonReset.FontSize = controller.GetBodySize();
 
         SetButton();
 
@@ -119,13 +119,13 @@ public partial class OptionsMenuPage : ContentPage
         controller.SetLargeControl();
 
 
-        OptionsHeader.FontSize = PreferencesService.HeaderSize;
-        ButtonSmall.FontSize = PreferencesService.BodySize;
-        ButtonMedium.FontSize = PreferencesService.BodySize;
-        ButtonLarge.FontSize = PreferencesService.BodySize;
-        ButtonExport.FontSize = PreferencesService.BodySize;
-        ButtonTest.FontSize = PreferencesService.BodySize;
-        ButtonReset.FontSize = PreferencesService.BodySize;
+        OptionsHeader.FontSize = controller.GetHeaderSize();
+        ButtonSmall.FontSize = controller.GetBodySize();
+        ButtonMedium.FontSize = controller.GetBodySize();
+        ButtonLarge.FontSize = controller.GetBodySize();
+        ButtonExport.FontSize = controller.GetBodySize();
+        ButtonTest.FontSize = controller.GetBodySize();
+        ButtonReset.FontSize = controller.GetBodySize();
 
         SetButton();
 
@@ -182,13 +182,13 @@ public partial class OptionsMenuPage : ContentPage
         controller.ResetDefaultsControl();
 
 
-        OptionsHeader.FontSize = PreferencesService.HeaderSize;
-        ButtonSmall.FontSize = PreferencesService.BodySize;
-        ButtonMedium.FontSize = PreferencesService.BodySize;
-        ButtonLarge.FontSize = PreferencesService.BodySize;
-        ButtonExport.FontSize = PreferencesService.BodySize;
-        ButtonTest.FontSize = PreferencesService.BodySize;
-        ButtonReset.FontSize = PreferencesService.BodySize;
+        OptionsHeader.FontSize = controller.GetHeaderSize();
+        ButtonSmall.FontSize = controller.GetBodySize();
+        ButtonMedium.FontSize = controller.GetBodySize();
+        ButtonLarge.FontSize = controller.GetBodySize();
+        ButtonExport.FontSize = controller.GetBodySize();
+        ButtonTest.FontSize = controller.GetBodySize();
+        ButtonReset.FontSize = controller.GetBodySize();
 
         SetButton();
 
