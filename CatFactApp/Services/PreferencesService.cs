@@ -14,7 +14,7 @@ namespace CatFactApp.Services
         {
             get
             {
-                return Preferences.Get("font_size_header", 20);
+                return Preferences.Get("font_size_header", 22);
             }
             set
             {
