@@ -32,8 +32,8 @@ public partial class MainPage : ContentPage
     {
         CounterBtn.IsEnabled = false;
         
-        var (headerText, factText, imageSource) = await controller.GetFactControl();
-        if (headerText == "Null")
+        var response = await controller.GetFactControl();
+        if (response.headerText == "Null")
         {
             await DisplayAlert("Error", "Potential Connection error.", "Ok");
             CounterBtn.IsEnabled = true;
@@ -41,9 +41,9 @@ public partial class MainPage : ContentPage
         }
         else
         {
-            CatFactsHeader.Text = headerText;
-            FactLabel.Text = factText;
-            AnimalImage.Source = imageSource;
+            CatFactsHeader.Text = response.headerText;
+            FactLabel.Text = response.factText;
+            AnimalImage.Source = response.imageSource;
         }
 
         CounterBtn.IsEnabled = true;
