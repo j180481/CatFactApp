@@ -33,19 +33,21 @@
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
-        <HorizontalStackLayout Grid.Row="2">
+        <Grid Grid.Row="2" ColumnDefinitions="*,*">
             <Button
+                Grid.Column="0"
                 x:Name="ButtonAscending"
                 Text="Order by Ascending"
                 TextColor="{AppThemeBinding Light=White, Dark=White}"
                 BackgroundColor="{AppThemeBinding Light=SaddleBrown, Dark=Blue}"
                 Clicked="ButtonAscending_Clicked"/>
             <Button
+                Grid.Column="1"
                 x:Name="ButtonDescending"
                 Text="Order by Descending"
                 TextColor="{AppThemeBinding Light=White, Dark=White}"
                 BackgroundColor="{AppThemeBinding Light=SaddleBrown, Dark=Blue}"
                 Clicked="ButtonDescending_Clicked"/>
-        </HorizontalStackLayout>
+        </Grid>
     </Grid>
 </ContentPage>
