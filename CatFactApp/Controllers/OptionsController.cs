@@ -14,7 +14,7 @@ namespace CatFactApp.Controllers
     public class OptionsController
     {
 
-        ApiService _apiService = new ApiService();
+        ApiService apiService = new ApiService();
 
         public void SetSmallControl()
         {
@@ -44,7 +44,7 @@ namespace CatFactApp.Controllers
         {
             try
             {
-                await _apiService.GetFact();
+                await apiService.GetFact();
                 return true;
             }
             catch
