@@ -22,6 +22,10 @@ public partial class MainPage : ContentPage
         AboutButton.FontSize = Services.PreferencesService.BodySize;
         OptionsButton.FontSize = Services.PreferencesService.BodySize;
         SavedButton.FontSize = Services.PreferencesService.BodySize;
+
+        AboutButton.IsEnabled = true;
+        OptionsButton.IsEnabled = true;
+        SavedButton.IsEnabled = true;
     }
 
     private async void OnCounterClicked(object sender, EventArgs e)
@@ -52,7 +56,7 @@ public partial class MainPage : ContentPage
 
         await controller.GoToAboutControl();
 
-        AboutButton.IsEnabled = true;
+       
     }
 
     private async void OnOptionsClicked(object sender, EventArgs e)
@@ -61,7 +65,7 @@ public partial class MainPage : ContentPage
 
         await controller.GoToOptionsControl();
 
-        OptionsButton.IsEnabled = true;
+        
     }
 
     private async void OnSavedFactsClicked(object sender, EventArgs e)
@@ -70,7 +74,7 @@ public partial class MainPage : ContentPage
 
         await controller.GoToSavedFactsControl();
 
-        SavedButton.IsEnabled = true;
+        
     }
 
     private async void OnFactLabelHeld(object sender, EventArgs e)
