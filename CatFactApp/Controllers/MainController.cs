@@ -45,8 +45,13 @@ namespace CatFactApp.Controllers
             }
         } 
 
-        public async Task<int> SaveFactControl(string factText)
+        public async Task<int> SaveFactControl(string factText, string factHeader)
         {
+            if (factText == "Meow!!!" || factHeader == "Dog Time!!!!")
+            {
+                return -1;
+            }
+
             var fact = new DisplayFact
             {
                 fact = factText,

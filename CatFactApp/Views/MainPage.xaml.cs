@@ -81,11 +81,12 @@ public partial class MainPage : ContentPage
     {
 
 
-        if (FactLabel.Text == "Meow!!!") return;
+        int result = await controller.SaveFactControl(FactLabel.Text, CatFactsHeader.Text);
 
-        if (CatFactsHeader.Text == "Dog Time!!!!") return;
-
-        int result = await controller.SaveFactControl(FactLabel.Text);
+        if (result == -1)
+        {
+            return;
+        }
 
         if (result == 0)
         {
