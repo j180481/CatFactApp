@@ -11,6 +11,18 @@ namespace CatFactApp.Controllers
     public class SavedFactsController
     {
 
+        public int GetHeaderSize()
+        {
+            return PreferencesService.HeaderSize;
+        }
+
+        public int GetBodySize()
+        {
+            return PreferencesService.BodySize;
+        }
+
+
+
         public async Task<List<DisplayFact>> GetFactsControl()
         {
             var facts = await App.DatabaseService.GetFactsAsync();

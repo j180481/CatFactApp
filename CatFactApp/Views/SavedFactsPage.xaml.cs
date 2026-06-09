@@ -19,9 +19,9 @@ public partial class SavedFactsPage : ContentPage
     protected override async void OnAppearing()
     {
         base.OnAppearing();
-        SavedFactsHeader.FontSize = PreferencesService.HeaderSize;
-        ButtonAscending.FontSize = PreferencesService.BodySize;
-        ButtonDescending.FontSize = PreferencesService.BodySize;
+        SavedFactsHeader.FontSize = controller.GetHeaderSize();
+        ButtonAscending.FontSize = controller.GetBodySize();
+        ButtonDescending.FontSize = controller.GetBodySize();
         await UpdateList();
     }
 
