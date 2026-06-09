@@ -14,16 +14,16 @@ namespace CatFactApp.Controllers
         int count = 0;
         int dogCount = 10;
 
-        public static int GetHeaderSize()
+        public int GetHeaderSize()
         {
             return PreferencesService.HeaderSize;
         }
 
-        public static int GetBodySize()
+        public int GetBodySize()
         {
             return PreferencesService.BodySize;
         }
-    }
+    
 
 
         /// <summary>

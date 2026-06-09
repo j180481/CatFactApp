@@ -16,12 +16,12 @@ public partial class MainPage : ContentPage
     protected override void OnAppearing()
     {
         base.OnAppearing();
-        CatFactsHeader.FontSize = Services.PreferencesService.HeaderSize;
-        FactLabel.FontSize = Services.PreferencesService.BodySize;
-        CounterBtn.FontSize = Services.PreferencesService.BodySize;
-        AboutButton.FontSize = Services.PreferencesService.BodySize;
-        OptionsButton.FontSize = Services.PreferencesService.BodySize;
-        SavedButton.FontSize = Services.PreferencesService.BodySize;
+        CatFactsHeader.FontSize = controller.GetHeaderSize();
+        FactLabel.FontSize = controller.GetBodySize();
+        CounterBtn.FontSize = controller.GetBodySize();
+        AboutButton.FontSize = controller.GetBodySize();
+        OptionsButton.FontSize = controller.GetBodySize();
+        SavedButton.FontSize = controller.GetBodySize();
 
         //every time the page appears we reset the navigation buttons to true
         AboutButton.IsEnabled = true;
