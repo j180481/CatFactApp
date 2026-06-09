@@ -36,16 +36,24 @@ public partial class SavedFactsPage : ContentPage
 
     private async void ButtonAscending_Clicked(object sender, EventArgs e)
     {
+        ButtonAscending.IsEnabled = false;
+
         var facts = await controller.GetAscendingControl();
         FactsCollectionView.ItemsSource = null;
         FactsCollectionView.ItemsSource = facts;
+
+        ButtonAscending.IsEnabled = true;
     }
 
     private async void ButtonDescending_Clicked(object sender, EventArgs e)
     {
+        ButtonDescending.IsEnabled = false;
+
         var facts = await controller.GetDescendingControl();
         FactsCollectionView.ItemsSource = null;
         FactsCollectionView.ItemsSource = facts;
+
+        ButtonDescending.IsEnabled = true;
     }
 
 
