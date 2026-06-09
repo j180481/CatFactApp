@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="CatFactApp.Controllers.AboutController">
+    <Position X="5" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAACAAAAA=</HashCode>
+      <FileName>Controllers\AboutController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CatFactApp.Controllers.MainController">
+    <Position X="3.25" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAEBAAAAAAAABAAAgAAAAIAAAAAAAQAAgCEAAAA=</HashCode>
+      <FileName>Controllers\MainController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CatFactApp.Controllers.OptionsController">
+    <Position X="6.75" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAEgAAAAAAAAAAgAAAEAAAAIAAAQAAACAAAAI=</HashCode>
+      <FileName>Controllers\OptionsController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CatFactApp.Controllers.SavedFactsController">
+    <Position X="8.5" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAoAAAAAAAAAAAAgAAAAAAAAAAQAAACAAEAQ=</HashCode>
+      <FileName>Controllers\SavedFactsController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CatFactApp.Models.CatFact">
+    <Position X="3.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>Models\CatFact.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CatFactApp.Models.DisplayFact">
+    <Position X="5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAADAAAAAAAAAAAAAAAAAgAAAAAACAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\DisplayFact.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CatFactApp.Models.DogResponse">
+    <Position X="6.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACA=</HashCode>
+      <FileName>Models\DogResponse.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CatFactApp.Services.ApiService">
+    <Position X="3.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAIAAA=</HashCode>
+      <FileName>Services\ApiService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CatFactApp.Services.PreferencesService">
+    <Position X="6.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\PreferencesService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CatFactApp.Services.SQLService">
+    <Position X="5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAiABAAAAAAAAAAAAAAAAAAAAAAAAAgAA=</HashCode>
+      <FileName>Services\SQLService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CatFactApp.Views.AboutPage">
+    <Position X="5" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAAAgAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\AboutPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CatFactApp.Views.MainPage">
+    <Position X="3.25" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAEAgAAAGAAAABgAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\MainPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CatFactApp.Views.OptionsMenuPage">
+    <Position X="8.5" Y="11" Width="1.25" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAgAAAEAAAAAAAAACAAAAAAAIAEAAAYAAIA=</HashCode>
+      <FileName>Views\OptionsMenuPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CatFactApp.Views.SavedFactsPage">
+    <Position X="6.75" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgAAAMAAAAAAAAAAAAAACAAAACAAgAAAAA=</HashCode>
+      <FileName>Views\SavedFactsPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CatFactApp.App">
+    <Position X="8.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQIAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
