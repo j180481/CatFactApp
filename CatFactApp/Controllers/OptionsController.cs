@@ -57,27 +57,25 @@ namespace CatFactApp.Controllers
         /// 
         /// Resource: https://learn.microsoft.com/en-us/dotnet/communitytoolkit/maui/essentials/file-saver?tabs=android
         /// </summary>
-        public async Task ExportFactsControl()
+        public async Task<bool> ExportFactsControl()
         {
+            //retrieve facts from database
             var facts = await App.DatabaseService.GetFactsAsync();
 
+            //build a string of all the facts with newlines between
             string file = "";
             foreach (var fact in facts)
             {
                 file += fact.fact + "\n";
             }
 
+            //pass the string to be converted to memory stream
+            //FileSaver opens allowing user to choose where to save the string as a text file
             using var stream = new MemoryStream(Encoding.Default.GetBytes(file));
-
             var result = await FileSaver.Default.SaveAsync("SavedFacts.txt", stream, CancellationToken.None);
-            if (result.IsSuccessful)
-            {
-                await Toast.Make("File Saved").Show(CancellationToken.None);
-            }
-            else
-            {
-                await Toast.Make("File Failed to save").Show(CancellationToken.None);
-            }
+
+            //return boolean if save successful
+            return result.IsSuccessful;
 
 
 

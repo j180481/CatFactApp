@@ -137,7 +137,16 @@ public partial class OptionsMenuPage : ContentPage
     {
         ButtonExport.IsEnabled = false;
 
-        await controller.ExportFactsControl();
+        bool response =  await controller.ExportFactsControl();
+
+        if (response == true)
+        {
+            await DisplayAlert("Export", "Success", "Ok");
+        }
+        else
+        {
+            await DisplayAlert("Export", "Failed", "Ok");
+        }
 
         ButtonExport.IsEnabled = true;
     }
