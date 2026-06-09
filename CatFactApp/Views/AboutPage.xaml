@@ -104,7 +104,7 @@
             VerticalTextAlignment="Center"
             FontSize="18"
             TextColor="{AppThemeBinding Light=Black, Dark=White}"
-            Text="Meow facts is a simple app which connects with two seperate APIs returning a cat fact or if you're (un)lucky: DOG TIME. An api returns the photo a random dog. Pressing Get fact on the main page will return either the text containing the fact or transform the main page to DOG TIME. Pressing and holding on the fact text will save it. You can view the list of your saved facts in the saved facts page. The options menu will allow you to change text size."
+            Text="Meow facts is a simple app which connects with two seperate APIs returning a cat fact or if you're (un)lucky: DOG TIME. An api returns the photo a random dog. Pressing Get fact on the main page will return either the text containing the fact or transform the main page to DOG TIME. Double tapping the fact will save it, unless you already have it. You can view the list of your saved facts in the saved facts page. You can delete saved facts by swiping on them in the list. The options menu will allow you to change text size."
             />
 
 
