@@ -14,8 +14,11 @@ namespace CatFactApp.Controllers
         public async Task<List<DisplayFact>> GetFactsControl()
         {
             var facts = await App.DatabaseService.GetFactsAsync();
+
+            //setting the fact fontsize property so the text in the list can be same font size as the app
             foreach (var fact in facts)
                 fact.FontSize = PreferencesService.BodySize;
+
             return facts;
         }
 
