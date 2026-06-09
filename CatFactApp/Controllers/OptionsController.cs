@@ -16,6 +16,12 @@ namespace CatFactApp.Controllers
 
         ApiService apiService = new ApiService();
 
+        //Use this to retrieve the current saved header size as an int
+        public int RetrieveHeaderSizePreference()
+        {
+            return PreferencesService.HeaderSize;
+        }
+
         public void SetSmallControl()
         {
             PreferencesService.HeaderSize = 18;

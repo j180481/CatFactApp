@@ -45,19 +45,23 @@ public partial class OptionsMenuPage : ContentPage
         ButtonMedium.BorderColor = Colors.Transparent;
         ButtonLarge.BorderColor = Colors.Transparent;
 
-        if (PreferencesService.HeaderSize == 18)
+        //retrieve the current header font size as an int from the saved preference
+        int currentHeader = controller.RetrieveHeaderSizePreference();
+
+        //Then check it to determine which button is set as active visually in the UI
+        if (currentHeader == 18)
         {
             ButtonSmall.BorderWidth = 3;
             ButtonSmall.BorderColor = Colors.Green;
         }
 
-        else if (PreferencesService.HeaderSize == 22)
+        else if (currentHeader == 22)
         {
             ButtonMedium.BorderWidth = 3;
             ButtonMedium.BorderColor = Colors.Green;
         }
 
-        else if (PreferencesService.HeaderSize == 26)
+        else if (currentHeader == 26)
         {
             ButtonLarge.BorderWidth = 3;
             ButtonLarge.BorderColor = Colors.Green;
