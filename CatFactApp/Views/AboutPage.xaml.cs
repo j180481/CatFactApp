@@ -6,6 +6,8 @@ using System.Windows.Input;
 public partial class AboutPage : ContentPage
 {
 
+    AboutController controller = new AboutController();
+
     public ICommand TapCommand => new Command<string>(async (url) => await Launcher.OpenAsync(url));
 
     public AboutPage()
@@ -17,12 +19,12 @@ public partial class AboutPage : ContentPage
     protected override void OnAppearing()
     {
         base.OnAppearing();
-        AboutHeader.FontSize = PreferencesService.HeaderSize;
-        CatApiText.FontSize = PreferencesService.BodySize;
-        CatApiLink.FontSize = PreferencesService.BodySize;
-        DogApiText.FontSize = PreferencesService.BodySize;
-        DogApiLink.FontSize = PreferencesService.BodySize;
-        HelpText.FontSize = PreferencesService.BodySize;
+        AboutHeader.FontSize = controller.GetHeaderSize();
+        CatApiText.FontSize = controller.GetBodySize();
+        CatApiLink.FontSize = controller.GetBodySize();
+        DogApiText.FontSize = controller.GetBodySize();
+        DogApiLink.FontSize = controller.GetBodySize();
+        HelpText.FontSize = controller.GetBodySize();
     }
 
 }

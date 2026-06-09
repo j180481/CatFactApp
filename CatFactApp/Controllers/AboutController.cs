@@ -10,12 +10,12 @@ namespace CatFactApp.Controllers
 {
     public class AboutController
     {
-        public static int GetHeaderSize()
+        public int GetHeaderSize()
         {
             return PreferencesService.HeaderSize;
         }
 
-        public static int GetBodySize()
+        public int GetBodySize()
         {
             return PreferencesService.BodySize;
         }
